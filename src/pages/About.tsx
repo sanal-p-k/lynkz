@@ -32,39 +32,32 @@ const About = () => {
         </div>
       </section>
 
-      {/* Story Section */}
-      <section className="py-20 bg-gradient-to-b from-black to-primary/5">
-        <div className="container mx-auto px-6">
+      {/* Behind Lynkz Section */}
+      <section className="py-20 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/5 to-black/50"></div>
+        <div className="container mx-auto px-6 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6 animate-slide-in-left">
-              <h2 className="text-4xl font-bold text-white">Our Story</h2>
+            <div className="space-y-6">
+              <h2 className="text-4xl font-bold text-white">Behind Lynkz</h2>
               <p className="text-muted-foreground leading-relaxed">
-                Lynkz Agency was born from a simple belief: every brand has a unique story worth telling. We started in a small studio with big dreams, and today we're proud to be a leading digital agency that helps businesses connect with their audiences in meaningful ways.
+                Lynkz is the brainchild of four friends who came together with a shared dream—to build a creative tech agency that blends storytelling, design, and engineering into solutions that matter. We're not just developers or marketers—we're builders, hustlers, designers, and strategists who love solving real problems.
               </p>
               <p className="text-muted-foreground leading-relaxed">
-                Our approach combines creativity with data-driven strategy, ensuring that every project we take on not only looks amazing but delivers real results. We don't just build websites or create content—we build relationships and craft experiences that resonate.
+                Our strength lies in our diversity—one part code, one part content, one part strategy, one part hustle. From web development to digital campaigns, branding to analytics, we create work that speaks with clarity and performs with purpose.
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                What makes Lynkz different isn't just our skills—it's the way we think. We're small, fast, and deeply committed to every brand we work with. We treat every project like it's our own startup, blending creativity with execution, and always staying hungry to learn, adapt, and deliver.
               </p>
             </div>
-            <div className="grid grid-cols-2 gap-6">
-              <div className="bg-card p-6 rounded-xl border border-white/10 hover-lift">
-                <Users className="text-primary mb-4" size={40} />
-                <h3 className="text-2xl font-bold text-white mb-2">50+</h3>
-                <p className="text-muted-foreground">Team Members</p>
-              </div>
-              <div className="bg-card p-6 rounded-xl border border-white/10 hover-lift">
-                <Target className="text-primary mb-4" size={40} />
-                <h3 className="text-2xl font-bold text-white mb-2">200+</h3>
-                <p className="text-muted-foreground">Projects Completed</p>
-              </div>
-              <div className="bg-card p-6 rounded-xl border border-white/10 hover-lift">
-                <Lightbulb className="text-primary mb-4" size={40} />
-                <h3 className="text-2xl font-bold text-white mb-2">15</h3>
-                <p className="text-muted-foreground">Awards Won</p>
-              </div>
-              <div className="bg-card p-6 rounded-xl border border-white/10 hover-lift">
-                <Rocket className="text-primary mb-4" size={40} />
-                <h3 className="text-2xl font-bold text-white mb-2">98%</h3>
-                <p className="text-muted-foreground">Client Satisfaction</p>
+            <div className="relative rounded-xl overflow-hidden border border-white/10 hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10">
+              <img 
+                src="/about.jpg" 
+                alt="The Lynkz Team" 
+                className="w-full h-auto object-cover"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                <p className="text-white text-sm">The Lynkz Founders</p>
               </div>
             </div>
           </div>

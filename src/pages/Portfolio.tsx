@@ -6,61 +6,46 @@ const Portfolio = () => {
 
   const projects = [
     {
-      title: "TechStart Rebranding",
+      title: "Zara's Fashion",
+      category: "E-commerce",
+      description: "Revolutionizing online shopping experience with a high-performance e-commerce platform",
+      image: "/port1.png",
+      client: "Zara's Fashion"
+    },
+    {
+      title: "PK Door Branding",
       category: "Branding",
-      description: "Complete brand overhaul for a Silicon Valley startup",
-      image: "bg-gradient-to-br from-purple-600 to-blue-600",
+      description: "Crafting a bold new identity that reflects innovation and reliability",
+      image: "/port6.png",
+      client: "PK Door"
     },
     {
-      title: "EcoStore E-commerce",
+      title: "WTD Logistics",
+      category: "Mobile App",
+      description: "Streamlining logistics operations with a custom mobile solution",
+      image: "/port8.jpg",
+      client: "WTD Logistics"
+    },
+    {
+      title: "Tech Solutions",
       category: "Web Development",
-      description: "Sustainable shopping platform with 300% conversion increase",
-      image: "bg-gradient-to-br from-green-600 to-teal-600",
+      description: "Modern web platform for a leading tech company",
+      image: "/port2.png",
+      client: "Tech Solutions Inc."
     },
     {
-      title: "FitLife Campaign",
-      category: "Social Media",
-      description: "Viral fitness campaign reaching 2M+ users",
-      image: "bg-gradient-to-br from-orange-600 to-red-600",
+      title: "Creative Studio",
+      category: "Branding",
+      description: "Complete visual identity for a creative agency",
+      image: "/port3.png",
+      client: "Creative Studio"
     },
     {
-      title: "FinanceAI Platform",
-      category: "AI & Automation",
-      description: "AI-powered financial advisory platform",
-      image: "bg-gradient-to-br from-indigo-600 to-purple-600",
-    },
-    {
-      title: "Restaurant Chain",
-      category: "Video Production",
-      description: "Brand story documentary series",
-      image: "bg-gradient-to-br from-yellow-600 to-orange-600",
-    },
-    {
-      title: "Data Dashboard",
-      category: "Data Solutions",
-      description: "Real-time analytics dashboard for enterprise client",
-      image: "bg-gradient-to-br from-cyan-600 to-blue-600",
-    },
-  ];
-
-  const caseStudies = [
-    {
-      client: "TechVision Inc.",
-      problem: "Low brand recognition in crowded market",
-      solution: "Developed comprehensive rebrand with unique visual identity",
-      result: "Brand awareness increased by 250% in 6 months",
-    },
-    {
-      client: "GreenGrocer",
-      problem: "Poor online sales conversion rates",
-      solution: "Redesigned e-commerce platform with UX optimization",
-      result: "Conversion rate improved from 1.2% to 4.8%",
-    },
-    {
-      client: "FitPro Studios",
-      problem: "Stagnant social media growth",
-      solution: "Created engaging content strategy with influencer partnerships",
-      result: "Grew from 5K to 50K followers in 3 months",
+      title: "Fitness App",
+      category: "Mobile Development",
+      description: "Personalized fitness tracking and workout plans",
+      image: "/port4.png",
+      client: "FitLife"
     },
   ];
 
@@ -108,7 +93,6 @@ const Portfolio = () => {
           </p>
         </div>
       </section>
-
       {/* Portfolio Grid */}
       <section className="py-20 bg-black">
         <div className="container mx-auto px-6">
@@ -116,18 +100,29 @@ const Portfolio = () => {
             {projects.map((project, index) => (
               <div
                 key={index}
-                className="group relative overflow-hidden rounded-xl cursor-pointer hover-lift"
-                style={{ animationDelay: `${index * 0.1}s` }}
+                className={`relative group overflow-hidden rounded-xl ${
+                  index % 3 === 0 ? 'lg:col-span-2' : 'lg:col-span-1'
+                }`}
               >
-                <div className={`aspect-square ${project.image} transition-transform duration-500 group-hover:scale-110`}></div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                    <div className="flex items-center justify-between mb-2">
-                      <span className="text-primary text-sm font-semibold">{project.category}</span>
-                      <ExternalLink className="text-primary" size={20} />
+                <div
+                  className="aspect-square bg-cover bg-center flex items-end p-6 transition-transform duration-500 group-hover:scale-105"
+                  style={{ backgroundImage: `url(/public${project.image})` }}
+                >
+                  <div className="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition-colors duration-300"></div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                      <div className="relative z-10 text-white w-full">
+                        <span className="inline-block px-3 py-1 text-xs font-medium bg-black/50 backdrop-blur-sm rounded-full mb-2">
+                          {project.category}
+                        </span>
+                        <h3 className="text-2xl font-bold">{project.title}</h3>
+                        <p className="opacity-90">{project.client}</p>
+                        <p className="text-sm mt-2 opacity-80">{project.description}</p>
+                        <button className="mt-3 px-4 py-2 text-sm font-medium bg-white/10 backdrop-blur-sm rounded-lg hover:bg-white/20 transition-colors">
+                          View Project
+                        </button>
+                      </div>
                     </div>
-                    <h3 className="text-2xl font-bold text-white mb-2">{project.title}</h3>
-                    <p className="text-muted-foreground">{project.description}</p>
                   </div>
                 </div>
               </div>
@@ -136,36 +131,7 @@ const Portfolio = () => {
         </div>
       </section>
 
-      {/* Case Studies */}
-      <section className="py-20 bg-gradient-to-b from-black to-primary/5">
-        <div className="container mx-auto px-6">
-          <h2 className="text-4xl font-bold text-center text-white mb-16">Case Studies</h2>
-          <div className="space-y-12">
-            {caseStudies.map((study, index) => (
-              <div
-                key={index}
-                className="grid grid-cols-1 lg:grid-cols-3 gap-8 bg-card border border-white/10 rounded-xl p-8 hover-lift"
-              >
-                <div className="space-y-4">
-                  <h4 className="text-sm font-semibold text-primary uppercase">Problem</h4>
-                  <h3 className="text-2xl font-bold text-white">{study.client}</h3>
-                  <p className="text-muted-foreground">{study.problem}</p>
-                </div>
-                <div className="space-y-4">
-                  <h4 className="text-sm font-semibold text-primary uppercase">Solution</h4>
-                  <p className="text-white">{study.solution}</p>
-                </div>
-                <div className="space-y-4">
-                  <h4 className="text-sm font-semibold text-primary uppercase">Result</h4>
-                  <p className="text-2xl font-bold text-primary">{study.result}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Client Testimonials Slider */}
+      {/* Testimonials Section */}
       <section className="py-20 bg-black">
         <div className="container mx-auto px-6">
           <h2 className="text-4xl font-bold text-center text-white mb-16">What Clients Say</h2>

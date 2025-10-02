@@ -1,0 +1,144 @@
+{
+  "international": {
+    "us": [
+      "social media marketing agency USA",
+      "digital marketing agency USA",
+      "video production agency New York"
+    ],
+    "uk": [
+      "digital marketing agency UK",
+      "digital advertising company London"
+    ],
+    "uae": [
+      "branding agency Dubai",
+      "creative agency UAE",
+      "branding and web development Dubai"
+    ],
+    "middleEast": [
+      "SMM agency Middle East",
+      "digital agency Gulf countries",
+      "branding agency Qatar"
+    ],
+    "singapore": [
+      "social media agency Singapore"
+    ],
+    "canada": [
+      "digital marketing agency Canada",
+      "content marketing company Toronto"
+    ],
+    "australia": [
+      "content creation agency Australia",
+      "creative design studio Melbourne"
+    ],
+    "europe": [
+      "social media agency Europe"
+    ]
+  },
+  "india": {
+    "panIndia": [
+      "digital marketing agency India",
+      "social media agency India",
+      "branding agency India",
+      "creative ad agencies India",
+      "video production services India",
+      "SEO agency India",
+      "content creation company India",
+      "web development company India",
+      "best digital marketing company in India",
+      "top creative agencies in India"
+    ],
+    "kerala": [
+      "social media marketing agency Kerala",
+      "digital marketing agency Kerala",
+      "creative agency Kerala"
+    ],
+    "bangalore": [
+      "branding agency Bangalore",
+      "digital marketing agency Bangalore"
+    ],
+    "chennai": [
+      "digital marketing agency Chennai",
+      "social media agency Chennai"
+    ],
+    "hyderabad": [
+      "creative agency Hyderabad",
+      "digital marketing agency Hyderabad"
+    ],
+    "delhi": [
+      "digital marketing agency Delhi",
+      "social media agency Delhi"
+    ],
+    "mumbai": [
+      "digital marketing agency Mumbai",
+      "creative agency Mumbai"
+    ],
+    "pune": [
+      "digital marketing agency Pune",
+      "social media agency Pune"
+    ],
+    "kolkata": [
+      "digital marketing agency Kolkata",
+      "creative agency Kolkata"
+    ]
+  },
+  "services": {
+    "socialMedia": [
+      "Instagram marketing agency",
+      "Facebook ads management services",
+      "TikTok marketing agency",
+      "LinkedIn marketing agency"
+    ],
+    "videoProduction": [
+      "YouTube video production agency",
+      "creative video ads agency",
+      "video production services"
+    ],
+    "branding": [
+      "creative branding solutions",
+      "logo & identity design company",
+      "corporate branding agency"
+    ],
+    "webDevelopment": [
+      "website design & development company",
+      "custom WordPress development agency",
+      "ecommerce development services",
+      "UI/UX design company",
+      "mobile app development agency"
+    ],
+    "marketing": [
+      "influencer marketing services",
+      "SaaS marketing agency",
+      "content marketing services"
+    ]
+  },
+  "hybrid": [
+    {
+      "base": "social media marketing agency",
+      "locations": ["Kerala", "Dubai", "London"]
+    },
+    {
+      "base": "branding agency",
+      "locations": ["Bangalore", "USA", "Singapore"]
+    },
+    {
+      "base": "creative agency",
+      "locations": ["Hyderabad", "Canada", "Australia"]
+    },
+    {
+      "base": "content creation",
+      "locations": ["Kerala", "UK", "UAE"]
+    },
+    {
+      "base": "video production",
+      "locations": ["Kerala", "New York", "Qatar"]
+    },
+    {
+      "base": "digital marketing",
+      "locations": ["India", "Dubai", "Europe"]
+    },
+    {
+      "base": "ad agency",
+      "locations": ["Kerala", "Canada", "Middle East"]
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-100% / 2)); }
+}
+
+.animateScroll {
+  animation: scroll 30s linear infinite;
+}
+
+@media (max-width: 768px) {
+  .animateScroll {
+    animation-duration: 20s;
+  }
+}
