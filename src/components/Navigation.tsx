@@ -45,12 +45,7 @@ const Navigation = () => {
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           <Link to="/" className="flex items-center space-x-2 group">
-            <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center group-hover:shadow-[0_0_20px_rgba(34,197,94,0.5)] transition-shadow">
-              <span className="text-black font-bold text-xl">L</span>
-            </div>
-            <span className="text-2xl font-bold text-white">
-              Lynkz <span className="text-primary">Agency</span>
-            </span>
+            <img src="/logo.png" alt="Lynkz Logo" className="w-10 h-10 rounded-lg group-hover:shadow-[0_0_20px_rgba(34,197,94,0.5)] transition-shadow" />
           </Link>
 
           {/* Desktop Navigation */}

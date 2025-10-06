@@ -9,9 +9,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-                <span className="text-black font-bold text-xl">L</span>
-              </div>
+              <img src="/logo.png" alt="Lynkz Logo" className="w-10 h-10 rounded-lg" />
               <span className="text-xl font-bold text-white">
                 Lynkz <span className="text-primary">Agency</span>
               </span>
@@ -26,16 +24,19 @@ const Footer = () => {
             <h3 className="text-white font-semibold mb-4">Quick Links</h3>
             <div className="space-y-2">
               <Link to="/" className="block text-muted-foreground hover:text-primary transition-colors">
-                Home
+                Lynkz Hub
               </Link>
               <Link to="/about" className="block text-muted-foreground hover:text-primary transition-colors">
-                About Us
+                Behind Lynkz
               </Link>
               <Link to="/services" className="block text-muted-foreground hover:text-primary transition-colors">
-                Services
+                Solutions We Lynk
               </Link>
               <Link to="/portfolio" className="block text-muted-foreground hover:text-primary transition-colors">
-                Portfolio
+                Lynkz in Action
+              </Link>
+              <Link to="/contact" className="block text-muted-foreground hover:text-primary transition-colors">
+                Lynk Up
               </Link>
             </div>
           </div>
@@ -57,15 +58,15 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center space-x-2 text-muted-foreground text-sm">
                 <Mail size={16} className="text-primary" />
-                <span>hello@lynkz.agency</span>
+                <span>lynkzagency@gmail.com</span>
               </div>
               <div className="flex items-center space-x-2 text-muted-foreground text-sm">
                 <Phone size={16} className="text-primary" />
-                <span>+1 (555) 123-4567</span>
+                <span>+91 9497684728</span>
               </div>
               <div className="flex items-center space-x-2 text-muted-foreground text-sm">
                 <MapPin size={16} className="text-primary" />
-                <span>New York, NY</span>
+                <span>Malappuram, Kerala</span>
               </div>
             </div>
           </div>
@@ -77,16 +78,13 @@ const Footer = () => {
             © 2025 Lynkz Agency. All rights reserved.
           </p>
           <div className="flex space-x-4">
-            <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary hover:scale-110 transition-all">
+            <a href="https://www.facebook.com/profile.php?id=61581432620812" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary hover:scale-110 transition-all">
               <Facebook size={18} className="text-white" />
             </a>
-            <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary hover:scale-110 transition-all">
-              <Twitter size={18} className="text-white" />
-            </a>
-            <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary hover:scale-110 transition-all">
+            <a href="https://www.instagram.com/lynkz.agency/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary hover:scale-110 transition-all">
               <Instagram size={18} className="text-white" />
             </a>
-            <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary hover:scale-110 transition-all">
+            <a href="https://www.linkedin.com/company/lynkz-agency/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary hover:scale-110 transition-all">
               <Linkedin size={18} className="text-white" />
             </a>
           </div>

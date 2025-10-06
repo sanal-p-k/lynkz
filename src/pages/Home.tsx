@@ -1,9 +1,10 @@
-import { useEffect, useState, useRef } from "react";
-import { ArrowRight, Quote, Star, ChevronLeft, ChevronRight } from "lucide-react";
+import { useEffect, useState, useRef, ReactNode } from "react";
+import { ArrowRight, Quote, Star, ChevronLeft, ChevronRight, Instagram, Linkedin, Facebook, TrendingUp, X, Youtube, Palette, BarChart2, Megaphone, XCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import styles from "@/styles/animations.module.css";
+import TestimonialCard from "@/components/TestimonialCard";
 
 // Portfolio item type
 type PortfolioItem = {
@@ -16,16 +17,24 @@ type PortfolioItem = {
 
 // Testimonial type
 type Testimonial = {
+  [x: string]: ReactNode;
+  rating: number;
   id: number;
   name: string;
-  role: string;
   company: string;
   content: string;
-  rating: number;
-  image: string;
 };
 
 const Home = () => {
+  const [selectedImage, setSelectedImage] = useState<{src: string, title: string, category: string} | null>(null);
+
+  const stats = [
+    { value: "20+", label: "Clients Served" },
+    { value: "50+", label: "Projects Completed" },
+    { value: "4", label: "Team Members" },
+    { value: "99%", label: "Client Satisfaction" },
+  ];
+
   const [currentKeyword, setCurrentKeyword] = useState(0);
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [currentCaseStudy, setCurrentCaseStudy] = useState(0);
@@ -38,39 +47,39 @@ const Home = () => {
     "Innovation",
   ];
 
-  // Portfolio items
+  // Portfolio items (showing only 6 items on home page)
   const portfolioItems: PortfolioItem[] = [
     { 
       id: 1, 
-      title: 'Zaras Fashion E-commerce', 
+      title: 'PM ZARA/SDN BHD', 
       category: 'E-commerce Development', 
-      image: '/port1.png', 
+      image: '/port15.png', 
       link: '/portfolio/zaras-fashion' 
     },
     { 
       id: 2, 
-      title: 'DataCorrel Analytics Dashboard', 
+      title: 'DataCorrel', 
       category: 'Web Application', 
-      image: '/port2.png', 
+      image: '/port13.png', 
       link: '/portfolio/datacorrel-analytics' 
     },
     { 
       id: 3, 
-      title: 'FAB Mobile App', 
-      category: 'Mobile App UI/UX', 
-      image: '/port3.png', 
+      title: 'FAB Global HR', 
+      category: 'Social Media Marketing', 
+      image: '/port9.png', 
       link: '/portfolio/fab-mobile-app' 
     },
     { 
       id: 4, 
-      title: 'Savees Grocery Campaign', 
+      title: 'Savees Group UK', 
       category: 'Digital Marketing', 
-      image: '/port4.png', 
+      image: '/port17.png', 
       link: '/portfolio/savees-campaign' 
     },
     { 
       id: 5, 
-      title: 'Nurtr HR Solutions', 
+      title: 'Nurtr HR', 
       category: 'Web Development', 
       image: '/port5.png', 
       link: '/portfolio/nurtr-hr' 
@@ -81,104 +90,119 @@ const Home = () => {
       category: 'Brand Identity', 
       image: '/port6.png', 
       link: '/portfolio/pk-door' 
-    },
-    { 
-      id: 7, 
-      title: 'Soorya Healthcare', 
-      category: 'Website Redesign', 
-      image: '/port7.png', 
-      link: '/portfolio/soorya-healthcare' 
-    },
-    { 
-      id: 8, 
-      title: 'WTD Logistics', 
-      category: 'Mobile App Development', 
-      image: '/port8.jpg', 
-      link: '/portfolio/wtd-logistics' 
-    },
-    { 
-      id: 9, 
-      title: 'Lynkz Agency Website', 
-      category: 'Web Development', 
-      image: '/port9.png', 
-      link: '/portfolio/lynkz-website' 
     }
   ];
 
   // Case studies
   const caseStudies = [
     {
-      id: 1,
-      title: 'Zaras Fashion E-commerce Platform',
-      description: 'Developed a custom e-commerce solution that increased online sales by 180% in the first 6 months with a mobile-first approach and seamless checkout experience.',
-      image: '/port1.png',
-      results: ['180%', 'Sales Increase', '2.8s', 'Avg. Page Load', '45%', 'Mobile Traffic']
+      id: "nurthr-digital-transformation",
+      title: 'Digital Audit & Transformation – NurtrHR',
+      description: 'When NurtrHR approached Lynkz, their digital presence was scattered — outdated website, inconsistent brand tone, and weak engagement on social media. We conducted a complete digital audit covering brand consistency, SEO performance, content effectiveness, and UI/UX. Based on insights, Lynkz rebuilt the brand identity, redesigned both websites, and created a strong content rhythm.',
+      image: '/Case Studies/nurtrhr.png',
+      results: ['100%', 'Brand Consistency', '45', 'Days to Launch', '3x', 'Engagement Growth'],
+      client: 'NurtrHR',
+      category: 'Digital Strategy & Web Development',
+      keyResults: [
+        '100% brand consistency across all digital platforms',
+        '2 modern, responsive websites launched within 45 days',
+        '3x increase in user engagement within the first month',
+        '40% improvement in organic search traffic',
+        'Streamlined application process for job seekers'
+      ]
     },
     {
-      id: 2,
-      title: 'DataCorrel Analytics Dashboard',
-      description: 'Created an interactive analytics dashboard that provided real-time business insights, reducing reporting time by 65% and improving decision-making efficiency.',
-      image: '/port2.png',
-      results: ['65%', 'Faster Reporting', '90%', 'User Adoption', '4.9/5', 'User Rating']
+      id: "fab-global-hr",
+      title: 'Social Media Growth Engine – Fab Global HR',
+      description: 'Fab Global HR wanted to establish themselves as thought leaders in the competitive HR consultancy market but struggled with low visibility and inconsistent posting.',
+      image: '/Case Studies/fab_cs.png',
+      results: ['100K+', 'Organic Reach', '45%', 'Engagement Rate', '1', 'Month to Results'],
+      client: 'Fab Global HR',
+      category: 'Social Media Marketing',
+      keyResults: [
+        '100,000+ organic reach within 30 days',
+        '45% increase in engagement rate',
+        'Established as HR thought leader in the region',
+        'Consistent brand voice across all platforms',
+        'Higher quality lead generation'
+      ]
     },
     {
-      id: 3,
-      title: 'Savees Grocery Digital Campaign',
-      description: 'Executed a comprehensive digital marketing campaign that boosted online orders by 220% and increased social media engagement by 350%.',
-      image: '/port4.png',
-      results: ['220%', 'More Orders', '350%', 'Engagement', '5x', 'ROI']
+      id: "data-tutorial",
+      title: 'Analytics Meets Aesthetics – Data Tutorial',
+      description: 'Data Tutorial needed a professional platform to showcase analytics tutorials with interactive dashboards and real-time data visualization.',
+      image: '/Case Studies/dt_cs.png',
+      results: ['60%', 'Higher Session Duration', '100%', 'Dashboard Integration', '4.9/5', 'User Rating'],
+      client: 'Data Tutorial',
+      category: 'Web Development & Analytics',
+      keyResults: [
+        '60% higher average session duration',
+        'Seamless integration of analytics dashboards',
+        'Professional design that reflects data expertise',
+        'Improved user engagement metrics',
+        'Positive feedback from technical users'
+      ]
     }
   ];
 
   // Client logos with portfolio image placeholders
   const clientLogos = [
-    { id: 1, name: 'PM Zara', logo: '/Clients/zaras.png' },
+    { id: 1, name: 'PM ZARA\'S SDN BHD', logo: '/Clients/pmzara.png' },
     { id: 2, name: 'DataCorrel', logo: '/Clients/datacorrel.png' },
-    { id: 3, name: 'FAB Mobile', logo: '/Clients/fab.png' },
+    { id: 3, name: 'FAB Global HR', logo: '/Clients/fab.png' },
     { id: 4, name: 'Nurtr HR', logo: '/Clients/nurtrhr.png' },
     { id: 5, name: 'PK Door', logo: '/Clients/pkdoorbg.png' },
     { id: 6, name: 'Savees Group', logo: '/Clients/savees.png' },
-    { id: 7, name: 'Soorya Healthcare', logo: '/Clients/soorya.png' },
-    { id: 8, name: 'What The Data', logo: '/Clients/wtd.png' }
+    { id: 7, name: 'International Soorya Solar', logo: '/Clients/soorya.png' },
+    { id: 8, name: 'What The Data', logo: '/Clients/wtd.png' },
+    { id: 9, name: 'Data Tutorial', logo: '/Clients/data-tutorial.png' },
+    { id: 10, name: 'Galaxy Security', logo: '/Clients/galaxy.png' },
+    { id: 11, name: 'LP', logo: '/Clients/lp.png' }
   ];
 
   // Testimonials
   const testimonials: Testimonial[] = [
     {
       id: 1,
-      name: 'Rahul Menon',
-      role: 'CEO',
-      company: 'Zaras Fashion',
-      content: 'Lynkz transformed our e-commerce platform completely. The new design and improved user flow resulted in a 180% increase in sales within six months. Their team understood our vision and delivered beyond our expectations.',
+      name: 'Swapnajeet',
+      company: 'Data Tutorial',
       rating: 5,
-      image: '/port1.png'
+      content: 'Lynkz Agency delivered a stunning website with seamless Power BI and Tableau integrations. The design and functionality exceeded my expectations — truly impressive work!',
     },
     {
       id: 2,
-      name: 'Priya Sharma',
-      role: 'Marketing Director',
-      company: 'Savees Grocery',
-      content: 'The digital campaign by Lynkz was a game-changer for us. Their strategic approach and creative execution helped us achieve a 220% increase in online orders. Their team is responsive, professional, and truly cares about their clients\' success.',
+      name: 'International Soorya Solar',
+      company: '',
       rating: 5,
-      image: '/port4.png'
+      content: 'It’s been great working with the Lynkz team. They manage our social media with creativity and consistency — I’m really happy with the quality of content they deliver.',
     },
     {
       id: 3,
-      name: 'Vikram Nair',
-      role: 'CTO',
-      company: 'DataCorrel',
-      content: 'The analytics dashboard developed by Lynkz has revolutionized how we process and visualize data. Their technical expertise and attention to detail are commendable. The solution has saved us countless hours in reporting.',
+      name: 'Musavir',
+      company: 'Fab Global HR',
       rating: 5,
-      image: '/port2.png'
+      content: 'Lynkz and team have been managing our social media brilliantly! We hit over 100K reach within just one month — outstanding content and strategy.',
     },
     {
       id: 4,
-      name: 'Anjali Krishnan',
-      role: 'Founder',
-      company: 'Nurtr HR',
-      content: 'Working with Lynkz has been a fantastic experience. They delivered our HR platform on time and within budget. Their team is knowledgeable, professional, and went above and beyond to ensure our satisfaction.',
+      name: 'Archana',
+      company: 'NurtrHR',
       rating: 5,
-      image: '/port5.png'
+      content: 'Lynkz handled our complete branding and website design — and I couldn’t be happier! Their responses are super quick, and both websites they created look absolutely professional.',
+    },
+    {
+      id: 5,
+      name: 'Smarty Mukherjee',
+      company: 'DataCorrel',
+      rating: 5,
+      content: 'Lynkz manages my LinkedIn and other social channels, and I’m genuinely seeing results! Great teamwork, consistency, and attention to detail.',
+    },
+    {
+      id: 6,
+      name: 'Hiran',
+      company: 'Savees Group UK',
+      rating: 5,
+      content: 'Lynkz built our website and now handles our social media. Both have turned out excellent — modern, engaging, and perfectly aligned with our brand. Highly recommend them!',
     }
   ];
 
@@ -190,6 +214,38 @@ const Home = () => {
 
     return () => clearInterval(testimonialInterval);
   }, []);
+
+  // Handle keyboard navigation for image viewer
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (!selectedImage) return;
+      
+      if (e.key === 'Escape') {
+        setSelectedImage(null);
+      } else if (e.key === 'ArrowRight') {
+        const currentIndex = portfolioItems.findIndex(item => item.image === selectedImage.src);
+        const nextIndex = (currentIndex + 1) % portfolioItems.length;
+        const nextItem = portfolioItems[nextIndex];
+        setSelectedImage({
+          src: nextItem.image,
+          title: nextItem.title,
+          category: nextItem.category
+        });
+      } else if (e.key === 'ArrowLeft') {
+        const currentIndex = portfolioItems.findIndex(item => item.image === selectedImage.src);
+        const prevIndex = (currentIndex - 1 + portfolioItems.length) % portfolioItems.length;
+        const prevItem = portfolioItems[prevIndex];
+        setSelectedImage({
+          src: prevItem.image,
+          title: prevItem.title,
+          category: prevItem.category
+        });
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [selectedImage]);
 
   // Animation variants
   const container = {
@@ -286,6 +342,109 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Stats Section */}
+      <section className="py-16 bg-black border-y border-white/10">
+        <div className="container mx-auto px-6">
+          <motion.div
+            className="grid grid-cols-2 md:grid-cols-4 gap-8"
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.5 }}
+            variants={{
+              show: { transition: { staggerChildren: 0.2 } }
+            }}
+          >
+            {stats.map((stat, index) => (
+              <motion.div
+                key={index}
+                className="text-center"
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  show: { opacity: 1, y: 0 }
+                }}
+              >
+                <h3 className="text-4xl md:text-5xl font-bold text-gradient glow-green mb-2">{stat.value}</h3>
+                <p className="text-muted-foreground">{stat.label}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* About Us Section */}
+      <section className="py-20 bg-black">
+        <div className="container mx-auto px-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <motion.div
+              className="relative h-80 flex items-center justify-center"
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              {[
+                // Top row (3 icons)
+                { icon: Instagram, className: 'top-16 left-1/4 -translate-x-1/2', size: 36, label: 'Instagram' },
+                { icon: Linkedin, className: 'top-16 left-1/2 -translate-x-1/2', size: 40, label: 'LinkedIn' },
+                { icon: Facebook, className: 'top-16 right-1/4 translate-x-1/2', size: 40, label: 'Facebook' },
+                
+                // Middle row (3 icons)
+                { icon: X, className: 'top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2', size: 36, label: 'X (formerly Twitter)' },
+                { icon: BarChart2, className: 'top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2', size: 44, label: 'Analytics' },
+                { icon: Youtube, className: 'top-1/2 right-1/4 translate-x-1/2 -translate-y-1/2', size: 44, label: 'YouTube' },
+                
+                // Bottom row (3 icons)
+                { icon: Palette, className: 'bottom-16 left-1/4 -translate-x-1/2', size: 36, label: 'Design' },
+                { icon: Megaphone, className: 'bottom-16 left-1/2 -translate-x-1/2', size: 40, label: 'Marketing' },
+                { icon: TrendingUp, className: 'bottom-16 right-1/4 translate-x-1/2', size: 40, label: 'Trending' }
+              ].map((item, index) => (
+                <motion.div
+                  key={index}
+                  className={`absolute ${item.className}`}
+                  animate={{
+                    y: [0, -10, 0, 10, 0],
+                  }}
+                  transition={{
+                    duration: 4 + index * 0.5,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                >
+                  <span className="sr-only">{item.label}</span>
+                  <item.icon 
+                    size={item.size} 
+                    className="text-primary/50"
+                    aria-hidden="true"
+                  />
+                </motion.div>
+              ))}
+            </motion.div>
+            <motion.div 
+              className="space-y-6"
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              <span className="inline-block px-4 py-1 text-sm font-medium text-primary bg-primary/10 rounded-full">About Us</span>
+              <h2 className="text-4xl md:text-5xl font-bold">Your Partner in Digital Excellence</h2>
+              <p className="text-muted-foreground text-lg">
+                Lynkz is a creative digital agency that blends design, storytelling, and strategy to help brands connect with their audiences. We are a team of passionate creators, thinkers, and innovators dedicated to crafting digital experiences that are not only beautiful but also drive results.
+              </p>
+              <p className="text-muted-foreground text-lg">
+                Our mission is to empower businesses by providing them with the tools and expertise needed to thrive in the digital landscape. We believe in collaboration, transparency, and a client-first approach.
+              </p>
+              <Link to="/about">
+                <Button variant="outline" className="group mt-4">
+                  Learn More About Us
+                  <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={16} />
+                </Button>
+              </Link>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* Infinite Keyword Slider */}
       <section className="py-20 border-y border-white/10 overflow-hidden bg-black/50">
         <div className="flex space-x-12 animate-slide-infinite">
@@ -319,14 +478,18 @@ const Home = () => {
             {portfolioItems.map((item) => (
               <motion.div 
                 key={item.id} 
-                className="group relative overflow-hidden rounded-xl border border-white/10 hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:shadow-primary/10"
+                className="relative overflow-hidden rounded-xl border border-white/10"
                 variants={item}
               >
-                <div className="aspect-[4/3] overflow-hidden">
+                <div className="aspect-[4/3] overflow-hidden cursor-pointer" onClick={() => setSelectedImage({
+                  src: item.image,
+                  title: item.title,
+                  category: item.category
+                })}>
                   <img 
                     src={item.image} 
                     alt={`${item.title} - ${item.category} project by Lynkz`} 
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    className="w-full h-full object-cover"
                     loading="lazy"
                     width={400}
                     height={300}
@@ -588,69 +751,33 @@ const Home = () => {
           </motion.div>
           
           <div className="relative">
-            {/* Gradient Fade Effect */}
-            <div className="absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none"></div>
-            <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none"></div>
-            
+                        
             {/* Infinite Scrolling Logos */}
             <div className={`flex items-center py-8 ${styles.animateScroll}`}>
-              {/* First set of logos */}
-              <div className="flex items-center space-x-8 md:space-x-16 pr-8 md:pr-16">
-                {clientLogos.map((logo, i) => (
-                  <motion.div 
-                    key={`first-${i}`} 
-                    className="flex-shrink-0 group relative"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.1 * i, duration: 0.5 }}
-                  >
-                    <div className="h-24 w-40 md:h-28 md:w-48 flex items-center justify-center p-3 md:p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-white/5 transition-all duration-300 group-hover:bg-white/10 group-hover:border-primary/30 group-hover:shadow-lg group-hover:shadow-primary/10">
-                      <img 
-                        src={logo.logo} 
-                        alt={logo.name} 
-                        className="max-h-12 md:max-h-16 max-w-full object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
-                        loading="lazy"
-                        width={160}
-                        height={80}
-                        onError={(e) => {
-                          // Fallback to a placeholder if image fails to load
-                          (e.target as HTMLImageElement).src = `https://via.placeholder.com/160x80?text=${encodeURIComponent(logo.name)}`;
-                        }}
-                      />
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-              
-              {/* Duplicate set for infinite scroll effect */}
-              <div className="flex items-center space-x-8 md:space-x-16">
-                {clientLogos.map((logo, i) => (
-                  <motion.div 
-                    key={`second-${i}`} 
-                    className="flex-shrink-0 group relative"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.1 * i, duration: 0.5 }}
-                  >
-                    <div className="h-24 w-40 md:h-28 md:w-48 flex items-center justify-center p-3 md:p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-white/5 transition-all duration-300 group-hover:bg-white/10 group-hover:border-primary/30 group-hover:shadow-lg group-hover:shadow-primary/10">
-                      <img 
-                        src={logo.logo} 
-                        alt={logo.name}
-                        className="max-h-12 md:max-h-16 max-w-full object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
-                        loading="lazy"
-                        width={160}
-                        height={80}
-                        onError={(e) => {
-                          // Fallback to a placeholder if image fails to load
-                          (e.target as HTMLImageElement).src = `https://via.placeholder.com/160x80?text=${encodeURIComponent(logo.name)}`;
-                        }}
-                      />
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
+              {[...clientLogos, ...clientLogos].map((logo, i) => (
+                <motion.div 
+                  key={i} 
+                  className="flex-shrink-0 group relative mx-8"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: (i % clientLogos.length) * 0.1, duration: 0.5 }}
+                >
+                  <div className="h-28 w-48 flex items-center justify-center p-4 bg-black rounded-2xl border-2 border-white/10 transition-all duration-300 group-hover:border-primary/50 group-hover:bg-primary/5 group-hover:-translate-y-2 group-hover:shadow-2xl group-hover:shadow-primary/20">
+                    <img 
+                      src={logo.logo} 
+                      alt={logo.name} 
+                      className="max-h-14 max-w-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
+                      loading="lazy"
+                      width={160}
+                      height={80}
+                      onError={(e) => {
+                        (e.target as HTMLImageElement).src = `https://via.placeholder.com/160x80?text=${encodeURIComponent(logo.name)}`;
+                      }}
+                    />
+                  </div>
+                </motion.div>
+              ))}
             </div>
             
             <motion.p 
@@ -765,20 +892,7 @@ const Home = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.4 }}
                       >
-                        <motion.div 
-                          className="w-14 h-14 rounded-full overflow-hidden border-2 border-primary relative group"
-                          whileHover={{ scale: 1.1 }}
-                        >
-                          <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                          <img 
-                            src={testimonial.image} 
-                            alt={testimonial.name} 
-                            className="w-full h-full object-cover"
-                            loading="lazy"
-                            width={56}
-                            height={56}
-                          />
-                        </motion.div>
+                        
                         <div className="text-left">
                           <h4 className="font-bold text-white">{testimonial.name}</h4>
                           <p className="text-sm text-muted-foreground">{testimonial.role}, {testimonial.company}</p>
@@ -824,22 +938,6 @@ const Home = () => {
                 )
               ))}
             </AnimatePresence>
-            
-            <motion.div 
-              className="mt-16 text-center"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.5, duration: 0.6 }}
-            >
-              <p className="text-muted-foreground mb-6">Ready to share your success story with us?</p>
-              <Link to="/contact">
-                <Button className="group">
-                  Get Started
-                  <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={16} />
-                </Button>
-              </Link>
-            </motion.div>
           </div>
         </div>
       </section>
@@ -953,22 +1051,35 @@ const Home = () => {
             >
               <div className="flex items-center">
                 <div className="flex -space-x-2">
-                  {[1, 2, 3].map((i) => (
-                    <div 
-                      key={i}
-                      className="w-8 h-8 rounded-full border-2 border-white/10 overflow-hidden"
-                      style={{ zIndex: 3 - i }}
-                    >
-                      <img 
-                        src={`/port${i}.png`} 
-                        alt={`Client ${i}`} 
-                        className="w-full h-full object-cover"
-                        loading="lazy"
-                        width={32}
-                        height={32}
-                      />
-                    </div>
-                  ))}
+                  {[
+                    { src: '/Clients/soorya.png', alt: 'Soorya Solar' },
+                    { src: '/Clients/fab.png', alt: 'FAB Global HR' },
+                    { src: '/Clients/pmzara.png', alt: 'PM Zara' }
+                  ].map((img, i) => {
+                    // Debug: Log the image path
+                    console.log('Loading image:', img.src);
+                    return (
+                      <div 
+                        key={img.src}
+                        className="w-8 h-8 rounded-full border-2 border-white/10 overflow-hidden bg-white/5 flex items-center justify-center"
+                        style={{ zIndex: 3 - i }}
+                      >
+                        <img 
+                          src={img.src} 
+                          alt={img.alt}
+                          className="w-5 h-5 object-contain"
+                          loading="lazy"
+                          width={20}
+                          height={20}
+                          onError={(e) => {
+                            console.error('Failed to load image:', img.src, e);
+                            const target = e.target as HTMLImageElement;
+                            target.style.display = 'none';
+                          }}
+                        />
+                      </div>
+                    );
+                  })}
                 </div>
                 <div className="ml-3 text-left">
                   <div className="flex items-center">
@@ -976,7 +1087,7 @@ const Home = () => {
                       <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
                     ))}
                   </div>
-                  <p className="text-xs text-muted-foreground mt-1">Trusted by 100+ businesses</p>
+                  <p className="text-xs text-muted-foreground mt-1">Trusted by 20+ businesses</p>
                 </div>
               </div>
               
@@ -993,26 +1104,87 @@ const Home = () => {
                   <p className="text-xs text-muted-foreground">Quick project kickoff</p>
                 </div>
               </div>
-              
-              <div className="h-10 w-px bg-white/10 hidden md:block"></div>
-              
-              <div className="flex items-center space-x-2">
-                <div className="p-2 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10">
-                  <svg className="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                  </svg>
-                </div>
-                <div>
-                  <p className="text-sm font-medium">Proven Results</p>
-                  <p className="text-xs text-muted-foreground">Guaranteed satisfaction</p>
-                </div>
-              </div>
             </motion.div>
           </motion.div>
         </div>
       </section>
+
+      {/* Full Screen Image Viewer */}
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div 
+            className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4 md:p-8"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedImage(null)}
+          >
+            <div 
+              className="relative max-w-5xl max-h-[90vh] w-full" 
+              onClick={e => e.stopPropagation()}
+            >
+              <button 
+                className="absolute -top-10 right-0 text-white hover:text-primary transition-colors"
+                onClick={() => setSelectedImage(null)}
+                aria-label="Close"
+              >
+                <XCircle size={32} />
+              </button>
+              <div className="bg-gray-900 rounded-lg overflow-hidden">
+                <img 
+                  src={selectedImage.src} 
+                  alt={`${selectedImage.title} - ${selectedImage.category} project by Lynkz`}
+                  className="w-full h-auto max-h-[80vh] object-contain"
+                />
+                <div className="p-4 bg-gray-900/80">
+                  <h3 className="text-xl font-bold text-white">{selectedImage.title}</h3>
+                  <p className="text-primary">{selectedImage.category}</p>
+                </div>
+              </div>
+              
+              {/* Navigation Arrows */}
+              <button 
+                className="absolute left-4 top-1/2 -translate-y-1/2 text-white hover:text-primary p-2 rounded-full bg-black/50 hover:bg-black/70 transition-colors"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  const currentIndex = portfolioItems.findIndex(item => item.image === selectedImage.src);
+                  const prevIndex = (currentIndex - 1 + portfolioItems.length) % portfolioItems.length;
+                  const prevItem = portfolioItems[prevIndex];
+                  setSelectedImage({
+                    src: prevItem.image,
+                    title: prevItem.title,
+                    category: prevItem.category
+                  });
+                }}
+                aria-label="Previous image"
+              >
+                <ChevronLeft size={32} />
+              </button>
+              
+              <button 
+                className="absolute right-4 top-1/2 -translate-y-1/2 text-white hover:text-primary p-2 rounded-full bg-black/50 hover:bg-black/70 transition-colors"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  const currentIndex = portfolioItems.findIndex(item => item.image === selectedImage.src);
+                  const nextIndex = (currentIndex + 1) % portfolioItems.length;
+                  const nextItem = portfolioItems[nextIndex];
+                  setSelectedImage({
+                    src: nextItem.image,
+                    title: nextItem.title,
+                    category: nextItem.category
+                  });
+                }}
+                aria-label="Next image"
+              >
+                <ChevronRight size={32} />
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
 
 export default Home;
+

@@ -142,23 +142,42 @@ const Services = () => {
   };
 
   return (
-    <div className="min-h-screen pt-24 bg-black">
-      <div className="container mx-auto px-6 py-16">
-        <motion.div 
-          className="text-center mb-20"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-        >
-          <span className="inline-block text-primary/80 text-sm font-medium mb-4 tracking-widest">WHAT WE DO</span>
-          <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
-            Our <span className="text-gradient glow-green">Expertise</span>
-          </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Comprehensive digital solutions designed to transform your business and drive meaningful results
-          </p>
-        </motion.div>
+    <div className="min-h-screen bg-black">
+      {/* Hero Section with Animated Background */}
+      <section className="py-20 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/10 to-black">
+          {/* Network Grid Effect */}
+          <div className="absolute inset-0 opacity-20">
+            {[...Array(50)].map((_, i) => (
+              <div
+                key={i}
+                className="absolute w-2 h-2 bg-primary rounded-full animate-pulse-glow"
+                style={{
+                  top: `${Math.random() * 100}%`,
+                  left: `${Math.random() * 100}%`,
+                  animationDelay: `${Math.random() * 2}s`,
+                }}
+              />
+            ))}
+          </div>
+        </div>
+        <div className="container mx-auto px-6 relative z-10">
+          <motion.div 
+            className="text-center py-20"
+            initial={{ opacity: 0, y: 20 }}
+            animate={isVisible ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6 }}
+          >
+            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">Our <span className="text-gradient glow-green">Expertise</span></h1>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Comprehensive digital solutions tailored to elevate your brand and drive business growth.
+            </p>
+          </motion.div>
+        </div>
+      </section>
 
+      {/* Services Grid */}
+      <div className="container mx-auto px-6 py-16">
         <motion.div 
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           variants={container}

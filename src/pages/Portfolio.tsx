@@ -1,130 +1,143 @@
-import { useState } from "react";
-import { ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
+import { useState, useEffect, ReactNode } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import TestimonialCard from "@/components/TestimonialCard";
+
+// Testimonial type
+type Testimonial = {
+  [x: string]: ReactNode;
+  rating: number;
+  id: number;
+  name: string;
+  company: string;
+  content: string;
+};
 
 const Portfolio = () => {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [isVisible, setIsVisible] = useState(false);
 
-  const projects = [
-    {
-      title: "Zara's Fashion",
-      category: "E-commerce",
-      description: "Revolutionizing online shopping experience with a high-performance e-commerce platform",
-      image: "/port1.png",
-      client: "Zara's Fashion"
-    },
-    {
-      title: "PK Door Branding",
-      category: "Branding",
-      description: "Crafting a bold new identity that reflects innovation and reliability",
-      image: "/port6.png",
-      client: "PK Door"
-    },
-    {
-      title: "WTD Logistics",
-      category: "Mobile App",
-      description: "Streamlining logistics operations with a custom mobile solution",
-      image: "/port8.jpg",
-      client: "WTD Logistics"
-    },
-    {
-      title: "Tech Solutions",
-      category: "Web Development",
-      description: "Modern web platform for a leading tech company",
-      image: "/port2.png",
-      client: "Tech Solutions Inc."
-    },
-    {
-      title: "Creative Studio",
-      category: "Branding",
-      description: "Complete visual identity for a creative agency",
-      image: "/port3.png",
-      client: "Creative Studio"
-    },
-    {
-      title: "Fitness App",
-      category: "Mobile Development",
-      description: "Personalized fitness tracking and workout plans",
-      image: "/port4.png",
-      client: "FitLife"
-    },
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
+
+  const portfolioImages = [
+    "/port8.jpg",
+    "/port6.png",
+    "/port2.png",
+    "/port3.png",
+    "/port4.png",
+    "/port7.png",
+    "/port5.png",
+    "/port9.png",
+    "/port10.png",
+    "/port11.png",
+    "/port12.png",
+    "/port16.png",
+    "/port13.png",
+    "/port14.png",
+    "/port15.png",
+    "/port17.png",
+    "/port1.png"  // Moved the first image to the end
   ];
 
-  const testimonials = [
+  const testimonials: Testimonial[] = [
     {
-      name: "Sarah Johnson",
-      company: "TechVision Inc.",
-      logo: "TV",
-      text: "Lynkz transformed our brand identity. Their creative approach and attention to detail exceeded all expectations.",
+      id: 1,
+      name: 'Swapnajeet',
+      company: 'Data Tutorial',
+      rating: 5,
+      content: 'Lynkz Agency delivered a stunning website with seamless Power BI and Tableau integrations. The design and functionality exceeded my expectations — truly impressive work!',
     },
     {
-      name: "Michael Chen",
-      company: "GreenGrocer",
-      logo: "GG",
-      text: "The ROI from our website redesign has been incredible. Our sales have tripled since launch.",
+      id: 2,
+      name: 'International Soorya Solar',
+      company: '',
+      rating: 5,
+      content: 'It’s been great working with the Lynkz team. They manage our social media with creativity and consistency — I’m really happy with the quality of content they deliver.',
     },
     {
-      name: "Emily Rodriguez",
-      company: "FitPro Studios",
-      logo: "FP",
-      text: "Working with Lynkz felt like having an extension of our team. They truly understood our vision.",
+      id: 3,
+      name: 'Musavir',
+      company: 'Fab Global HR',
+      rating: 5,
+      content: 'Lynkz and team have been managing our social media brilliantly! We hit over 100K reach within just one month — outstanding content and strategy.',
     },
+    {
+      id: 4,
+      name: 'Archana',
+      company: 'NurtrHR',
+      rating: 5,
+      content: 'Lynkz handled our complete branding and website design — and I couldn’t be happier! Their responses are super quick, and both websites they created look absolutely professional.',
+    },
+    {
+      id: 5,
+      name: 'Smarty Mukherjee',
+      company: 'DataCorrel',
+      rating: 5,
+      content: 'Lynkz manages my LinkedIn and other social channels, and I’m genuinely seeing results! Great teamwork, consistency, and attention to detail.',
+    },
+    {
+      id: 6,
+      name: 'Hiran',
+      company: 'Savees Group UK',
+      rating: 5,
+      content: 'Lynkz built our website and now handles our social media. Both have turned out excellent — modern, engaging, and perfectly aligned with our brand. Highly recommend them!',
+    }
   ];
 
   const nextTestimonial = () => {
     setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
   };
-
   const prevTestimonial = () => {
     setCurrentTestimonial((prev) => (prev - 1 + testimonials.length) % testimonials.length);
   };
 
   return (
-    <div className="min-h-screen pt-24">
-      {/* Hero Section */}
+    <div className="min-h-screen bg-black">
+      {/* Hero Section with Animated Background */}
       <section className="py-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/10 to-black opacity-50"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/10 to-black">
+          {/* Network Grid Effect */}
+          <div className="absolute inset-0 opacity-20">
+            {[...Array(50)].map((_, i) => (
+              <div
+                key={i}
+                className="absolute w-2 h-2 bg-primary rounded-full animate-pulse-glow"
+                style={{
+                  top: `${Math.random() * 100}%`,
+                  left: `${Math.random() * 100}%`,
+                  animationDelay: `${Math.random() * 2}s`,
+                }}
+              />
+            ))}
+          </div>
+        </div>
         <div className="container mx-auto px-6 relative z-10">
-          <h1 className="text-5xl md:text-7xl font-bold text-center mb-6 animate-fade-in">
-            <span className="text-white">Lynkz in </span>
-            <span className="text-gradient glow-green">Action</span>
-          </h1>
-          <p className="text-xl text-center text-muted-foreground max-w-3xl mx-auto animate-slide-up">
-            Explore our portfolio of successful projects and the impact we've created for our clients.
-          </p>
+          <motion.div 
+            className="text-center py-20"
+            initial={{ opacity: 0, y: 20 }}
+            animate={isVisible ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6 }}
+          >
+            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">Our <span className="text-gradient glow-green">Portfolio</span></h1>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Explore our collection of creative work and success stories that showcase our expertise across various industries.
+            </p>
+          </motion.div>
         </div>
       </section>
       {/* Portfolio Grid */}
       <section className="py-20 bg-black">
         <div className="container mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {projects.map((project, index) => (
-              <div
-                key={index}
-                className={`relative group overflow-hidden rounded-xl ${
-                  index % 3 === 0 ? 'lg:col-span-2' : 'lg:col-span-1'
-                }`}
-              >
-                <div
-                  className="aspect-square bg-cover bg-center flex items-end p-6 transition-transform duration-500 group-hover:scale-105"
-                  style={{ backgroundImage: `url(/public${project.image})` }}
-                >
-                  <div className="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition-colors duration-300"></div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                      <div className="relative z-10 text-white w-full">
-                        <span className="inline-block px-3 py-1 text-xs font-medium bg-black/50 backdrop-blur-sm rounded-full mb-2">
-                          {project.category}
-                        </span>
-                        <h3 className="text-2xl font-bold">{project.title}</h3>
-                        <p className="opacity-90">{project.client}</p>
-                        <p className="text-sm mt-2 opacity-80">{project.description}</p>
-                        <button className="mt-3 px-4 py-2 text-sm font-medium bg-white/10 backdrop-blur-sm rounded-lg hover:bg-white/20 transition-colors">
-                          View Project
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+          <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
+            {portfolioImages.map((image, index) => (
+              <div key={index} className="overflow-hidden rounded-lg break-inside-avoid">
+                <img
+                  src={image}
+                  alt={`Portfolio image ${index + 1}`}
+                  className="w-full h-auto object-cover hover:scale-105 transition-transform duration-300"
+                />
               </div>
             ))}
           </div>
@@ -134,24 +147,15 @@ const Portfolio = () => {
       {/* Testimonials Section */}
       <section className="py-20 bg-black">
         <div className="container mx-auto px-6">
-          <h2 className="text-4xl font-bold text-center text-white mb-16">What Clients Say</h2>
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">What Our Clients Say</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">We're proud to have partnered with amazing clients. Here's what they have to say about their experience with Lynkz.</p>
+          </div>
+
           <div className="max-w-4xl mx-auto relative">
-            <div className="bg-card border border-white/10 rounded-xl p-12 text-center">
-              <div className="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
-                <span className="text-2xl font-bold text-black">
-                  {testimonials[currentTestimonial].logo}
-                </span>
-              </div>
-              <p className="text-xl text-white mb-6 italic">
-                "{testimonials[currentTestimonial].text}"
-              </p>
-              <h4 className="text-lg font-bold text-primary">
-                {testimonials[currentTestimonial].name}
-              </h4>
-              <p className="text-muted-foreground">
-                {testimonials[currentTestimonial].company}
-              </p>
-            </div>
+            <AnimatePresence mode="wait">
+              <TestimonialCard testimonial={testimonials[currentTestimonial]} />
+            </AnimatePresence>
 
             {/* Navigation Buttons */}
             <button

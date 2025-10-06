@@ -153,8 +153,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="text-white font-semibold mb-1">Email Us</h3>
-                    <p className="text-muted-foreground">hello@lynkz.agency</p>
-                    <p className="text-muted-foreground">support@lynkz.agency</p>
+                    <p className="text-muted-foreground">lynkzagency@gmail.com</p>
                   </div>
                 </div>
 
@@ -164,8 +163,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="text-white font-semibold mb-1">Call Us</h3>
-                    <p className="text-muted-foreground">+1 (555) 123-4567</p>
-                    <p className="text-muted-foreground">Mon-Fri, 9am-6pm EST</p>
+                    <p className="text-muted-foreground">+91 9497684728</p>
                   </div>
                 </div>
 
@@ -175,8 +173,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="text-white font-semibold mb-1">Visit Us</h3>
-                    <p className="text-muted-foreground">123 Innovation Drive</p>
-                    <p className="text-muted-foreground">New York, NY 10001</p>
+                    <p className="text-muted-foreground">Malappuram, Kerala</p>
                   </div>
                 </div>
               </div>
@@ -186,25 +183,22 @@ const Contact = () => {
                 <h3 className="text-white font-semibold mb-4">Follow Us</h3>
                 <div className="flex space-x-4">
                   <a
-                    href="#"
+                    href="https://www.facebook.com/profile.php?id=61581432620812"
+                    target="_blank" rel="noopener noreferrer"
                     className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-primary hover:border-primary hover:scale-110 transition-all"
                   >
                     <Facebook size={20} className="text-white" />
                   </a>
                   <a
-                    href="#"
-                    className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-primary hover:border-primary hover:scale-110 transition-all"
-                  >
-                    <Twitter size={20} className="text-white" />
-                  </a>
-                  <a
-                    href="#"
+                    href="https://www.instagram.com/lynkz.agency/"
+                    target="_blank" rel="noopener noreferrer"
                     className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-primary hover:border-primary hover:scale-110 transition-all"
                   >
                     <Instagram size={20} className="text-white" />
                   </a>
                   <a
-                    href="#"
+                    href="https://www.linkedin.com/company/lynkz-agency/"
+                    target="_blank" rel="noopener noreferrer"
                     className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-primary hover:border-primary hover:scale-110 transition-all"
                   >
                     <Linkedin size={20} className="text-white" />
