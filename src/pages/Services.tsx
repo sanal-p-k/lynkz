@@ -2,12 +2,13 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { 
   Palette,
-  Code,
+  Play,
   Search,
   BarChart2,
   MessageSquare,
   FileText,
-  Smartphone,
+  Clapperboard,
+  FileImage,
   TrendingUp
 } from "lucide-react";
 
@@ -31,7 +32,7 @@ const Services = () => {
       ]
     },
     {
-      icon: Code,
+      icon: Play,
       title: "AI video generation",
       description: "Create stunning, fast-turnaround AI-generated videos for marketing, social media, and brand storytelling.",
       details: [
@@ -64,7 +65,7 @@ const Services = () => {
       ]
     },
     {
-      icon: TrendingUp,
+      icon: FileImage,
       title: "Graphic designing",
       description: "Create visually stunning designs that communicate your brand's message effectively.",
       details: [
@@ -97,7 +98,7 @@ const Services = () => {
       ]
     },
     {
-      icon: Smartphone,
+      icon: Clapperboard,
       title: "Animation",
       description: "Bring your ideas to life with captivating animations and motion graphics.",
       details: [

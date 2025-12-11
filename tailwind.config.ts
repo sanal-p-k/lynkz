@@ -93,7 +93,7 @@ export default {
         },
         "slide-infinite": {
           "0%": { transform: "translateX(0)" },
-          "100%": { transform: "translateX(-50%)" },
+          "100%": { transform: "translateX(-100%)" },
         },
         "flip": {
           "0%": { transform: "rotateY(0deg)" },
@@ -105,7 +105,7 @@ export default {
         "accordion-up": "accordion-up 0.2s ease-out",
         "float": "float 6s ease-in-out infinite",
         "pulse-glow": "pulse-glow 2s ease-in-out infinite",
-        "slide-infinite": "slide-infinite 30s linear infinite",
+        "slide-infinite": "slide-infinite 10s linear infinite",
         "flip": "flip 0.6s ease-in-out",
       },
     },

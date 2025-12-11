@@ -26,7 +26,7 @@ type Testimonial = {
 };
 
 const Home = () => {
-  const [selectedImage, setSelectedImage] = useState<{src: string, title: string, category: string} | null>(null);
+  const [selectedImage, setSelectedImage] = useState<{ src: string, title: string, category: string } | null>(null);
 
   const stats = [
     { value: "20+", label: "Clients Served" },
@@ -49,47 +49,47 @@ const Home = () => {
 
   // Portfolio items (showing only 6 items on home page)
   const portfolioItems: PortfolioItem[] = [
-    { 
-      id: 1, 
-      title: 'PM ZARA/SDN BHD', 
-      category: 'E-commerce Development', 
-      image: '/port15.png', 
-      link: '/portfolio/zaras-fashion' 
+    {
+      id: 1,
+      title: 'PM ZARA/SDN BHD',
+      category: 'E-commerce Development',
+      image: '/port15.png',
+      link: '/portfolio/zaras-fashion'
     },
-    { 
-      id: 2, 
-      title: 'DataCorrel', 
-      category: 'Web Application', 
-      image: '/port13.png', 
-      link: '/portfolio/datacorrel-analytics' 
+    {
+      id: 2,
+      title: 'DataCorrel',
+      category: 'Web Application',
+      image: '/port13.png',
+      link: '/portfolio/datacorrel-analytics'
     },
-    { 
-      id: 3, 
-      title: 'FAB Global HR', 
-      category: 'Social Media Marketing', 
-      image: '/port9.png', 
-      link: '/portfolio/fab-mobile-app' 
+    {
+      id: 3,
+      title: 'FAB Global HR',
+      category: 'Social Media Marketing',
+      image: '/port9.png',
+      link: '/portfolio/fab-mobile-app'
     },
-    { 
-      id: 4, 
-      title: 'Savees Group UK', 
-      category: 'Digital Marketing', 
-      image: '/port17.png', 
-      link: '/portfolio/savees-campaign' 
+    {
+      id: 4,
+      title: 'Savees Group UK',
+      category: 'Digital Marketing',
+      image: '/port17.png',
+      link: '/portfolio/savees-campaign'
     },
-    { 
-      id: 5, 
-      title: 'Nurtr HR', 
-      category: 'Web Development', 
-      image: '/port5.png', 
-      link: '/portfolio/nurtr-hr' 
+    {
+      id: 5,
+      title: 'Nurtr HR',
+      category: 'Web Development',
+      image: '/port5.png',
+      link: '/portfolio/nurtr-hr'
     },
-    { 
-      id: 6, 
-      title: 'PK Door Branding', 
-      category: 'Brand Identity', 
-      image: '/port6.png', 
-      link: '/portfolio/pk-door' 
+    {
+      id: 6,
+      title: 'PK Door Branding',
+      category: 'Brand Identity',
+      image: '/port6.png',
+      link: '/portfolio/pk-door'
     }
   ];
 
@@ -148,7 +148,7 @@ const Home = () => {
   // Client logos with portfolio image placeholders
   const clientLogos = [
     { id: 1, name: 'PM ZARA\'S SDN BHD', logo: '/Clients/pmzara.png' },
-    { id: 2, name: 'DataCorrel', logo: '/Clients/datacorrel.png' },
+    { id: 2, name: 'DataCorrel', logo: '/Clients/datacorrel.svg' },
     { id: 3, name: 'FAB Global HR', logo: '/Clients/fab.png' },
     { id: 4, name: 'Nurtr HR', logo: '/Clients/nurtrhr.png' },
     { id: 5, name: 'PK Door', logo: '/Clients/pkdoorbg.png' },
@@ -208,6 +208,7 @@ const Home = () => {
     }
   ];
 
+
   // Auto-rotate testimonials
   useEffect(() => {
     const testimonialInterval = setInterval(() => {
@@ -221,7 +222,7 @@ const Home = () => {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (!selectedImage) return;
-      
+
       if (e.key === 'Escape') {
         setSelectedImage(null);
       } else if (e.key === 'ArrowRight') {
@@ -273,6 +274,21 @@ const Home = () => {
     return () => clearInterval(interval);
   }, []);
 
+const scatteredIcons = [
+  { icon: Instagram, pos: "top-[15%] left-[10%] md:left-[25%]", size: 30 },
+  { icon: Linkedin, pos: "top-[10%] left-[40%] md:left-[55%]", size: 34 },
+  { icon: Facebook, pos: "top-[15%] left-[70%] md:left-[85%]", size: 36 },
+
+  { icon: X, pos: "top-[45%] left-[10%] md:left-[25%]", size: 30 },
+  { icon: BarChart2, pos: "top-[50%] left-[40%] md:left-[55%]", size: 40 },
+  { icon: Youtube, pos: "top-[40%] left-[70%] md:left-[85%]", size: 40 },
+
+  { icon: Palette, pos: "top-[80%] left-[10%] md:left-[25%]", size: 30 },
+  { icon: Megaphone, pos: "top-[75%] left-[40%] md:left-[55%]", size: 34 },
+  { icon: TrendingUp, pos: "top-[80%] left-[70%] md:left-[85%]", size: 36 },
+];
+
+
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -306,15 +322,14 @@ const Home = () => {
               <span className="text-gradient glow-green">All Lynked.</span>
             </h1>
 
-            <div className="flex items-center justify-center space-x-4 text-xl md:text-2xl font-medium">
+            <div className="flex flex-wrap items-center justify-center gap-3 text-lg md:text-2xl font-medium text-center">
               {keywords.map((keyword, index) => (
                 <span
                   key={keyword}
-                  className={`transition-all duration-500 ${
-                    index === currentKeyword
+                  className={`transition-all duration-500 ${index === currentKeyword
                       ? "text-primary scale-110 opacity-100"
                       : "text-muted-foreground opacity-40 scale-90"
-                  }`}
+                    }`}
                 >
                   {keyword}
                   {index < keywords.length - 1 && (
@@ -377,51 +392,24 @@ const Home = () => {
       <section className="py-20 bg-black">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+<motion.div className="relative h-[500px] w-full">
+  {scatteredIcons.map((item, i) => (
+    <motion.div
+      key={i}
+      className={`absolute ${item.pos}`}
+      animate={{ y: [0, -10, 0, 10, 0] }}
+      transition={{
+        duration: 4 + i * 0.5,
+        repeat: Infinity,
+        ease: "easeInOut",
+      }}
+    >
+      <item.icon size={item.size} className="text-primary/50" />
+    </motion.div>
+  ))}
+</motion.div>
+
             <motion.div
-              className="relative h-80 flex items-center justify-center"
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
-              {[
-                // Top row (3 icons)
-                { icon: Instagram, className: 'top-16 left-1/4 -translate-x-1/2', size: 36, label: 'Instagram' },
-                { icon: Linkedin, className: 'top-16 left-1/2 -translate-x-1/2', size: 40, label: 'LinkedIn' },
-                { icon: Facebook, className: 'top-16 right-1/4 translate-x-1/2', size: 40, label: 'Facebook' },
-                
-                // Middle row (3 icons)
-                { icon: X, className: 'top-1/2 left-1/4 -translate-x-1/2 -translate-y-1/2', size: 36, label: 'X (formerly Twitter)' },
-                { icon: BarChart2, className: 'top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2', size: 44, label: 'Analytics' },
-                { icon: Youtube, className: 'top-1/2 right-1/4 translate-x-1/2 -translate-y-1/2', size: 44, label: 'YouTube' },
-                
-                // Bottom row (3 icons)
-                { icon: Palette, className: 'bottom-16 left-1/4 -translate-x-1/2', size: 36, label: 'Design' },
-                { icon: Megaphone, className: 'bottom-16 left-1/2 -translate-x-1/2', size: 40, label: 'Marketing' },
-                { icon: TrendingUp, className: 'bottom-16 right-1/4 translate-x-1/2', size: 40, label: 'Trending' }
-              ].map((item, index) => (
-                <motion.div
-                  key={index}
-                  className={`absolute ${item.className}`}
-                  animate={{
-                    y: [0, -10, 0, 10, 0],
-                  }}
-                  transition={{
-                    duration: 4 + index * 0.5,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                >
-                  <span className="sr-only">{item.label}</span>
-                  <item.icon 
-                    size={item.size} 
-                    className="text-primary/50"
-                    aria-hidden="true"
-                  />
-                </motion.div>
-              ))}
-            </motion.div>
-            <motion.div 
               className="space-y-6"
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -469,8 +457,8 @@ const Home = () => {
             <h2 className="text-4xl md:text-5xl font-bold mb-4">Our Latest Works</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">Explore our recent projects and see how we've helped businesses like yours succeed.</p>
           </div>
-          
-          <motion.div 
+
+          <motion.div
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
             variants={container}
             initial="hidden"
@@ -478,19 +466,19 @@ const Home = () => {
             viewport={{ once: true }}
           >
             {portfolioItems.map((item) => (
-              <motion.div 
-                key={item.id} 
+              <motion.div
+                key={item.id}
                 className="relative overflow-hidden rounded-xl border border-white/10"
-                // variants={item}
+              // variants={item}
               >
                 <div className="aspect-[4/3] overflow-hidden cursor-pointer" onClick={() => setSelectedImage({
                   src: item.image,
                   title: item.title,
                   category: item.category
                 })}>
-                  <img 
-                    src={item.image} 
-                    alt={`${item.title} - ${item.category} project by Lynkz`} 
+                  <img
+                    src={item.image}
+                    alt={`${item.title} - ${item.category} project by Lynkz`}
                     className="w-full h-full object-cover"
                     loading="lazy"
                     width={400}
@@ -501,7 +489,7 @@ const Home = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
                   <span className="text-sm text-primary font-medium mb-1">{item.category}</span>
                   <h3 className="text-xl font-bold text-white mb-3">{item.title}</h3>
-                  <Link 
+                  <Link
                     to={item.link}
                     className="inline-flex items-center text-sm font-medium text-white hover:text-primary transition-colors"
                   >
@@ -511,7 +499,7 @@ const Home = () => {
               </motion.div>
             ))}
           </motion.div>
-          
+
           <div className="text-center mt-12">
             <Link to="/portfolio">
               <Button variant="outline" className="group">
@@ -528,16 +516,16 @@ const Home = () => {
         <div className="absolute inset-0 opacity-5">
           <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] bg-center [mask-image:radial-gradient(ellipse_at_center,white,transparent_70%)]"></div>
         </div>
-        
+
         <div className="container mx-auto px-6 relative">
-          <motion.div 
+          <motion.div
             className="text-center mb-16"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6 }}
           >
-            <motion.span 
+            <motion.span
               className="inline-block px-4 py-1 text-sm font-medium text-primary bg-primary/10 rounded-full mb-4"
               initial={{ scale: 0.9, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}
@@ -546,7 +534,7 @@ const Home = () => {
             >
               Case Studies
             </motion.span>
-            <motion.h2 
+            <motion.h2
               className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -555,7 +543,7 @@ const Home = () => {
             >
               Success Stories
             </motion.h2>
-            <motion.p 
+            <motion.p
               className="text-muted-foreground max-w-2xl mx-auto"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -565,11 +553,11 @@ const Home = () => {
               Discover how we've helped businesses achieve remarkable results.
             </motion.p>
           </motion.div>
-          
+
           <div className="relative">
             <div className="overflow-hidden">
               <AnimatePresence mode="wait">
-                <motion.div 
+                <motion.div
                   key={currentCaseStudy}
                   initial={{ opacity: 0, x: 50 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -579,7 +567,7 @@ const Home = () => {
                 >
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     <div className="space-y-6">
-                      <motion.h3 
+                      <motion.h3
                         className="text-3xl font-bold bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent"
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -588,8 +576,8 @@ const Home = () => {
                       >
                         {caseStudies[currentCaseStudy].title}
                       </motion.h3>
-                      
-                      <motion.p 
+
+                      <motion.p
                         className="text-muted-foreground text-lg"
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -598,8 +586,8 @@ const Home = () => {
                       >
                         {caseStudies[currentCaseStudy].description}
                       </motion.p>
-                      
-                      <motion.div 
+
+                      <motion.div
                         className="grid grid-cols-3 gap-4 mt-8"
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -607,8 +595,8 @@ const Home = () => {
                         transition={{ delay: 0.4, staggerChildren: 0.1 }}
                       >
                         {caseStudies[currentCaseStudy].results.map((result, i) => (
-                          <motion.div 
-                            key={i} 
+                          <motion.div
+                            key={i}
                             className="text-center p-4 bg-white/5 rounded-lg backdrop-blur-sm border border-white/5 hover:border-primary/30 transition-colors"
                             whileHover={{ y: -5, boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)' }}
                             initial={{ opacity: 0, y: 20 }}
@@ -619,20 +607,20 @@ const Home = () => {
                             <div className="text-2xl font-bold text-primary">{result}</div>
                             {i % 2 === 0 && (
                               <div className="text-sm text-muted-foreground mt-1">
-                                {caseStudies[currentCaseStudy].results[i+1]}
+                                {caseStudies[currentCaseStudy].results[i + 1]}
                               </div>
                             )}
                           </motion.div>
                         ))}
                       </motion.div>
-                      
+
                       <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.5, duration: 0.5 }}
                       >
-                        <Button 
+                        <Button
                           className="mt-6 group"
                           onClick={() => window.location.href = `/case-studies/${caseStudies[currentCaseStudy].id}`}
                         >
@@ -641,8 +629,8 @@ const Home = () => {
                         </Button>
                       </motion.div>
                     </div>
-                    
-                    <motion.div 
+
+                    <motion.div
                       className="relative rounded-2xl overflow-hidden aspect-[4/3] border border-white/10 bg-gradient-to-br from-primary/5 to-primary/10"
                       initial={{ opacity: 0, scale: 0.95 }}
                       whileInView={{ opacity: 1, scale: 1 }}
@@ -656,9 +644,9 @@ const Home = () => {
                           <p className="text-primary text-sm">View Project</p>
                         </div>
                       </div>
-                      <img 
-                        src={caseStudies[currentCaseStudy].image} 
-                        alt={`${caseStudies[currentCaseStudy].title} case study`} 
+                      <img
+                        src={caseStudies[currentCaseStudy].image}
+                        alt={`${caseStudies[currentCaseStudy].title} case study`}
                         className="w-full h-full object-cover"
                         loading="lazy"
                         width={600}
@@ -668,7 +656,7 @@ const Home = () => {
                   </div>
                 </motion.div>
               </AnimatePresence>
-              
+
               <div className="flex justify-center mt-12 space-x-2">
                 {caseStudies.map((_, i) => (
                   <motion.button
@@ -681,7 +669,7 @@ const Home = () => {
                   />
                 ))}
               </div>
-              
+
               <div className="absolute right-0 top-1/2 -translate-y-1/2 hidden lg:flex justify-between w-full px-4">
                 <motion.button
                   onClick={() => setCurrentCaseStudy(prev => (prev - 1 + caseStudies.length) % caseStudies.length)}
@@ -692,7 +680,7 @@ const Home = () => {
                 >
                   <ChevronLeft className="w-6 h-6" />
                 </motion.button>
-                
+
                 <motion.button
                   onClick={() => setCurrentCaseStudy(prev => (prev + 1) % caseStudies.length)}
                   className="p-2 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-colors"
@@ -714,16 +702,16 @@ const Home = () => {
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary/5 via-transparent to-transparent"></div>
           <div className="absolute inset-0 bg-grid-white/[0.03] [mask-image:linear-gradient(0deg,transparent,black_70%)]"></div>
         </div>
-        
+
         <div className="container mx-auto px-6 relative">
-          <motion.div 
+          <motion.div
             className="text-center mb-16"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6 }}
           >
-            <motion.span 
+            <motion.span
               className="inline-block px-4 py-1 text-sm font-medium text-primary bg-primary/10 rounded-full mb-4"
               initial={{ scale: 0.9, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}
@@ -732,7 +720,7 @@ const Home = () => {
             >
               Our Clients
             </motion.span>
-            <motion.h2 
+            <motion.h2
               className="text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -741,7 +729,7 @@ const Home = () => {
             >
               Trusted By Industry Leaders
             </motion.h2>
-            <motion.p 
+            <motion.p
               className="text-muted-foreground max-w-2xl mx-auto"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -751,49 +739,49 @@ const Home = () => {
               We're proud to partner with innovative brands that trust our expertise and deliver exceptional results.
             </motion.p>
           </motion.div>
-          
+
           <div className="relative">
 
-  {/* Infinite Scrolling Logos */}
-  <div className="overflow-hidden">
-    <div className={`${styles.animateScroll} flex items-center gap-12 py-8`}>
-      {[...clientLogos, ...clientLogos].map((logo, i) => (
-        <motion.div 
-          key={i} 
-          className="flex-shrink-0 group relative"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: (i % clientLogos.length) * 0.1, duration: 0.5 }}
-        >
-          <div className="h-28 w-48 flex items-center justify-center p-4 bg-black rounded-2xl border-2 border-white/10 transition-all duration-300 group-hover:border-primary/50 group-hover:bg-primary/5 group-hover:-translate-y-2 group-hover:shadow-2xl group-hover:shadow-primary/20 mx-8">
-            <img 
-              src={logo.logo} 
-              alt={logo.name} 
-              className="max-h-14 max-w-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
-              loading="lazy"
-              width={160}
-              height={80}
-              onError={(e) => {
-                (e.target as HTMLImageElement).src = `https://via.placeholder.com/160x80?text=${encodeURIComponent(logo.name)}`;
-              }}
-            />
-          </div>
-        </motion.div>
-      ))}
-    </div>
-  </div>
+            {/* Infinite Scrolling Logos */}
+            <div className="overflow-hidden">
+              <div className={`${styles.animateScroll} flex items-center gap-12 py-8`}>
+                {[...clientLogos, ...clientLogos].map((logo, i) => (
+                  <motion.div
+                    key={i}
+                    className="flex-shrink-0 group relative"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: (i % clientLogos.length) * 0.1, duration: 0.5 }}
+                  >
+                    <div className="h-28 w-48 flex items-center justify-center p-4 bg-black rounded-2xl border-2 border-white/10 transition-all duration-300 group-hover:border-primary/50 group-hover:bg-primary/5 group-hover:-translate-y-2 group-hover:shadow-2xl group-hover:shadow-primary/20 mx-8">
+                      <img
+                        src={logo.logo}
+                        alt={logo.name}
+                        className="max-h-14 max-w-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
+                        loading="lazy"
+                        width={160}
+                        height={80}
+                        onError={(e) => {
+                          (e.target as HTMLImageElement).src = `https://via.placeholder.com/160x80?text=${encodeURIComponent(logo.name)}`;
+                        }}
+                      />
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
 
-  <motion.p 
-    className="text-sm text-muted-foreground max-w-2xl mx-auto mt-12 text-center"
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    transition={{ delay: 0.5, duration: 0.6 }}
-  >
-    And many more growing businesses that trust us with their digital presence
-  </motion.p>
-</div>
+            <motion.p
+              className="text-sm text-muted-foreground max-w-2xl mx-auto mt-12 text-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.5, duration: 0.6 }}
+            >
+              And many more growing businesses that trust us with their digital presence
+            </motion.p>
+          </div>
 
         </div>
       </section>
@@ -803,16 +791,16 @@ const Home = () => {
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] bg-center [mask-image:radial-gradient(ellipse_at_center,white,transparent_70%)]"></div>
         </div>
-        
+
         <div className="container mx-auto px-6 relative">
-          <motion.div 
+          <motion.div
             className="text-center mb-16"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6 }}
           >
-            <motion.span 
+            <motion.span
               className="inline-block px-4 py-1 text-sm font-medium text-primary bg-primary/10 rounded-full mb-4"
               initial={{ scale: 0.9, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}
@@ -821,7 +809,7 @@ const Home = () => {
             >
               Testimonials
             </motion.span>
-            <motion.h2 
+            <motion.h2
               className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -830,7 +818,7 @@ const Home = () => {
             >
               What Our Clients Say
             </motion.h2>
-            <motion.p 
+            <motion.p
               className="text-muted-foreground max-w-2xl mx-auto"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -840,7 +828,7 @@ const Home = () => {
               Hear from businesses that have transformed with our solutions.
             </motion.p>
           </motion.div>
-          
+
           <div className="max-w-5xl mx-auto">
             <AnimatePresence mode="wait">
               {testimonials.map((testimonial, index) => (
@@ -853,16 +841,16 @@ const Home = () => {
                     transition={{ duration: 0.5 }}
                     className="text-center"
                   >
-                    <motion.div 
+                    <motion.div
                       className="relative mb-12 p-8 md:p-12 bg-white/5 backdrop-blur-sm rounded-2xl border border-white/10 hover:border-primary/30 transition-all duration-300"
-                      whileHover={{ 
+                      whileHover={{
                         y: -5,
                         boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)'
                       }}
                     >
                       <Quote className="w-12 h-12 mx-auto text-primary/20 absolute -top-6 left-1/2 transform -translate-x-1/2" />
-                      
-                      <motion.p 
+
+                      <motion.p
                         className="text-xl md:text-2xl font-medium text-white/90 mb-8 leading-relaxed"
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -870,8 +858,8 @@ const Home = () => {
                       >
                         "{testimonial.content}"
                       </motion.p>
-                      
-                      <motion.div 
+
+                      <motion.div
                         className="flex items-center justify-center space-x-1 mb-6"
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -884,26 +872,26 @@ const Home = () => {
                             animate={{ scale: 1, opacity: 1 }}
                             transition={{ delay: 0.3 + (i * 0.1) }}
                           >
-                            <Star 
-                              className={`w-5 h-5 ${i < testimonial.rating ? 'text-yellow-400 fill-current' : 'text-gray-600'}`} 
+                            <Star
+                              className={`w-5 h-5 ${i < testimonial.rating ? 'text-yellow-400 fill-current' : 'text-gray-600'}`}
                             />
                           </motion.div>
                         ))}
                       </motion.div>
-                      
-                      <motion.div 
+
+                      <motion.div
                         className="flex items-center justify-center space-x-4"
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.4 }}
                       >
-                        
+
                         <div className="text-left">
                           <h4 className="font-bold text-white">{testimonial.name}</h4>
                           <p className="text-sm text-muted-foreground">{testimonial.role}, {testimonial.company}</p>
                         </div>
                       </motion.div>
-                      
+
                       <div className="absolute -bottom-5 left-1/2 transform -translate-x-1/2 flex space-x-2">
                         {testimonials.map((_, i) => (
                           <motion.button
@@ -917,7 +905,7 @@ const Home = () => {
                         ))}
                       </div>
                     </motion.div>
-                    
+
                     <div className="flex justify-center mt-8 space-x-4">
                       <motion.button
                         onClick={() => setCurrentTestimonial(prev => (prev - 1 + testimonials.length) % testimonials.length)}
@@ -928,7 +916,7 @@ const Home = () => {
                       >
                         <ChevronLeft className="w-5 h-5" />
                       </motion.button>
-                      
+
                       <motion.button
                         onClick={() => setCurrentTestimonial(prev => (prev + 1) % testimonials.length)}
                         className="p-2 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 transition-colors"
@@ -969,16 +957,16 @@ const Home = () => {
           </div>
           <div className="absolute inset-0 bg-grid-white/[0.02] [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]"></div>
         </div>
-        
+
         <div className="container mx-auto px-6 relative">
-          <motion.div 
+          <motion.div
             className="max-w-4xl mx-auto text-center"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8 }}
           >
-            <motion.span 
+            <motion.span
               className="inline-block px-4 py-1 text-sm font-medium text-primary bg-primary/10 rounded-full mb-6"
               initial={{ scale: 0.9, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}
@@ -987,8 +975,8 @@ const Home = () => {
             >
               Get Started
             </motion.span>
-            
-            <motion.h2 
+
+            <motion.h2
               className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -997,8 +985,8 @@ const Home = () => {
             >
               Ready to Transform Your Business?
             </motion.h2>
-            
-            <motion.p 
+
+            <motion.p
               className="text-xl text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -1007,8 +995,8 @@ const Home = () => {
             >
               Let's create something amazing together. Schedule a free consultation with our team today and take the first step towards your digital success.
             </motion.p>
-            
-            <motion.div 
+
+            <motion.div
               className="flex flex-col sm:flex-row justify-center gap-4"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -1016,19 +1004,19 @@ const Home = () => {
               transition={{ delay: 0.5, duration: 0.6 }}
             >
               <Link to="/contact" className="group">
-                <Button 
-                  size="lg" 
+                <Button
+                  size="lg"
                   className="px-8 py-6 text-lg group-hover:shadow-[0_0_30px_rgba(34,197,94,0.3)] transition-all duration-300"
                 >
                   Start Your Project
                   <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
                 </Button>
               </Link>
-              
+
               <Link to="/portfolio" className="group">
-                <Button 
-                  size="lg" 
-                  variant="outline" 
+                <Button
+                  size="lg"
+                  variant="outline"
                   className="px-8 py-6 text-lg group-hover:bg-white/5 group-hover:border-white/20 transition-all duration-300"
                 >
                   View Our Work
@@ -1036,8 +1024,8 @@ const Home = () => {
                 </Button>
               </Link>
             </motion.div>
-            
-            <motion.div 
+
+            <motion.div
               className="mt-8 text-sm text-muted-foreground"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -1046,8 +1034,8 @@ const Home = () => {
             >
               <p>No commitment. No pressure. Just results.</p>
             </motion.div>
-            
-            <motion.div 
+
+            <motion.div
               className="mt-12 pt-8 border-t border-white/5 flex flex-wrap justify-center gap-6 max-w-2xl mx-auto"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -1064,13 +1052,13 @@ const Home = () => {
                     // Debug: Log the image path
                     console.log('Loading image:', img.src);
                     return (
-                      <div 
+                      <div
                         key={img.src}
                         className="w-8 h-8 rounded-full border-2 border-white/10 overflow-hidden bg-white/5 flex items-center justify-center"
                         style={{ zIndex: 3 - i }}
                       >
-                        <img 
-                          src={img.src} 
+                        <img
+                          src={img.src}
                           alt={img.alt}
                           className="w-5 h-5 object-contain"
                           loading="lazy"
@@ -1095,9 +1083,9 @@ const Home = () => {
                   <p className="text-xs text-muted-foreground mt-1">Trusted by 20+ businesses</p>
                 </div>
               </div>
-              
+
               <div className="h-10 w-px bg-white/10 hidden md:block"></div>
-              
+
               <div className="flex items-center space-x-2">
                 <div className="p-2 rounded-lg bg-white/5 backdrop-blur-sm border border-white/10">
                   <svg className="w-5 h-5 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -1117,18 +1105,18 @@ const Home = () => {
       {/* Full Screen Image Viewer */}
       <AnimatePresence>
         {selectedImage && (
-          <motion.div 
+          <motion.div
             className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4 md:p-8"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setSelectedImage(null)}
           >
-            <div 
-              className="relative max-w-5xl max-h-[90vh] w-full" 
+            <div
+              className="relative max-w-5xl max-h-[90vh] w-full"
               onClick={e => e.stopPropagation()}
             >
-              <button 
+              <button
                 className="absolute -top-10 right-0 text-white hover:text-primary transition-colors"
                 onClick={() => setSelectedImage(null)}
                 aria-label="Close"
@@ -1136,8 +1124,8 @@ const Home = () => {
                 <XCircle size={32} />
               </button>
               <div className="bg-gray-900 rounded-lg overflow-hidden">
-                <img 
-                  src={selectedImage.src} 
+                <img
+                  src={selectedImage.src}
                   alt={`${selectedImage.title} - ${selectedImage.category} project by Lynkz`}
                   className="w-full h-auto max-h-[80vh] object-contain"
                 />
@@ -1146,9 +1134,9 @@ const Home = () => {
                   <p className="text-primary">{selectedImage.category}</p>
                 </div>
               </div>
-              
+
               {/* Navigation Arrows */}
-              <button 
+              <button
                 className="absolute left-4 top-1/2 -translate-y-1/2 text-white hover:text-primary p-2 rounded-full bg-black/50 hover:bg-black/70 transition-colors"
                 onClick={(e) => {
                   e.stopPropagation();
@@ -1165,8 +1153,8 @@ const Home = () => {
               >
                 <ChevronLeft size={32} />
               </button>
-              
-              <button 
+
+              <button
                 className="absolute right-4 top-1/2 -translate-y-1/2 text-white hover:text-primary p-2 rounded-full bg-black/50 hover:bg-black/70 transition-colors"
                 onClick={(e) => {
                   e.stopPropagation();
