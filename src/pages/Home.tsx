@@ -274,19 +274,19 @@ const Home = () => {
     return () => clearInterval(interval);
   }, []);
 
-const scatteredIcons = [
-  { icon: Instagram, pos: "top-[15%] left-[10%] md:left-[25%]", size: 30 },
-  { icon: Linkedin, pos: "top-[10%] left-[40%] md:left-[55%]", size: 34 },
-  { icon: Facebook, pos: "top-[15%] left-[70%] md:left-[85%]", size: 36 },
+  const scatteredIcons = [
+    { icon: Instagram, top: "15%", left: "12%", size: 36 },
+    { icon: Linkedin, top: "10%", left: "45%", size: 40 },
+    { icon: Facebook, top: "15%", left: "80%", size: 40 },
 
-  { icon: X, pos: "top-[45%] left-[10%] md:left-[25%]", size: 30 },
-  { icon: BarChart2, pos: "top-[50%] left-[40%] md:left-[55%]", size: 40 },
-  { icon: Youtube, pos: "top-[40%] left-[70%] md:left-[85%]", size: 40 },
+    { icon: X, top: "45%", left: "12%", size: 36 },
+    { icon: BarChart2, top: "50%", left: "45%", size: 44 },
+    { icon: Youtube, top: "40%", left: "80%", size: 44 },
 
-  { icon: Palette, pos: "top-[80%] left-[10%] md:left-[25%]", size: 30 },
-  { icon: Megaphone, pos: "top-[75%] left-[40%] md:left-[55%]", size: 34 },
-  { icon: TrendingUp, pos: "top-[80%] left-[70%] md:left-[85%]", size: 36 },
-];
+    { icon: Palette, top: "80%", left: "12%", size: 36 },
+    { icon: Megaphone, top: "75%", left: "45%", size: 40 },
+    { icon: TrendingUp, top: "80%", left: "80%", size: 40 }
+  ];
 
 
   return (
@@ -392,23 +392,23 @@ const scatteredIcons = [
       <section className="py-20 bg-black">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-<motion.div className="relative h-[500px] w-full">
-  {scatteredIcons.map((item, i) => (
-    <motion.div
-      key={i}
-      className={`absolute ${item.pos}`}
-      animate={{ y: [0, -10, 0, 10, 0] }}
-      transition={{
-        duration: 4 + i * 0.5,
-        repeat: Infinity,
-        ease: "easeInOut",
-      }}
-    >
-      <item.icon size={item.size} className="text-primary/50" />
-    </motion.div>
-  ))}
-</motion.div>
-
+            <motion.div className="relative h-[500px] w-full">
+              {scatteredIcons.map((item, i) => (
+                <motion.div
+                  key={i}
+                  className="absolute"
+                  style={{ top: item.top, left: item.left }}
+                  animate={{ y: [0, -10, 0, 10, 0] }}
+                  transition={{
+                    duration: 4 + i * 0.5,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                >
+                  <item.icon size={item.size} className="text-primary/50" />
+                </motion.div>
+              ))}
+            </motion.div>
             <motion.div
               className="space-y-6"
               initial={{ opacity: 0, x: 50 }}
