@@ -32,13 +32,13 @@ const Services = () => {
     },
     {
       icon: Code,
-      title: "Web Development",
-      description: "High-performance websites built for speed, security, and seamless user experiences.",
+      title: "AI video generation",
+      description: "Create stunning, fast-turnaround AI-generated videos for marketing, social media, and brand storytelling.",
       details: [
-        "Custom Web Applications",
-        "E-commerce Solutions",
-        "Progressive Web Apps (PWA)",
-        "API Integration"
+        "AI-generated promo & ads",
+        "Talking avatar videos",
+        "Script-to-video automation",
+        "Social media reels & ad creatives using AI"
       ]
     },
     {
@@ -65,13 +65,13 @@ const Services = () => {
     },
     {
       icon: TrendingUp,
-      title: "Data Analytics",
-      description: "Turn your data into actionable insights for smarter business decisions.",
+      title: "Graphic designing",
+      description: "Create visually stunning designs that communicate your brand's message effectively.",
       details: [
-        "Custom Dashboard Development",
-        "KPI Tracking & Reporting",
-        "User Behavior Analysis",
-        "Predictive Analytics"
+        "Social Media Graphics & Banners",
+        "Marketing Collateral (Flyers, Brochures, Posters)",
+        "Infographics & Visual Storytelling",
+        "Custom Illustrations & Iconography"
       ]
     },
     {
@@ -98,13 +98,13 @@ const Services = () => {
     },
     {
       icon: Smartphone,
-      title: "App Development",
-      description: "Innovative mobile solutions that solve real business challenges.",
+      title: "Animation",
+      description: "Bring your ideas to life with captivating animations and motion graphics.",
       details: [
-        "iOS & Android Development",
-        "Cross-Platform Solutions",
-        "UI/UX Design",
-        "App Store Optimization"
+        "Explainer Videos & Promotional Clips",
+        "Motion Graphics for Social Media",
+        "Character & Logo Animation",
+        "Video Editing & Post-Production"
       ]
     },
     {

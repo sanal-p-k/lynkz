@@ -157,7 +157,9 @@ const Home = () => {
     { id: 8, name: 'What The Data', logo: '/Clients/wtd.png' },
     { id: 9, name: 'Data Tutorial', logo: '/Clients/data-tutorial.png' },
     { id: 10, name: 'Galaxy Security', logo: '/Clients/galaxy.png' },
-    { id: 11, name: 'LP', logo: '/Clients/lp.png' }
+    { id: 11, name: 'LP', logo: '/Clients/lp.png' },
+    { id: 12, name: 'MIS Data Automate', logo: '/Clients/mis.svg' },
+    { id: 13, name: 'Samsung', logo: '/Clients/samsung.svg' },
   ];
 
   // Testimonials
@@ -479,7 +481,7 @@ const Home = () => {
               <motion.div 
                 key={item.id} 
                 className="relative overflow-hidden rounded-xl border border-white/10"
-                variants={item}
+                // variants={item}
               >
                 <div className="aspect-[4/3] overflow-hidden cursor-pointer" onClick={() => setSelectedImage({
                   src: item.image,
@@ -751,45 +753,48 @@ const Home = () => {
           </motion.div>
           
           <div className="relative">
-                        
-            {/* Infinite Scrolling Logos */}
-            <div className={`flex items-center py-8 ${styles.animateScroll}`}>
-              {[...clientLogos, ...clientLogos].map((logo, i) => (
-                <motion.div 
-                  key={i} 
-                  className="flex-shrink-0 group relative mx-8"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: (i % clientLogos.length) * 0.1, duration: 0.5 }}
-                >
-                  <div className="h-28 w-48 flex items-center justify-center p-4 bg-black rounded-2xl border-2 border-white/10 transition-all duration-300 group-hover:border-primary/50 group-hover:bg-primary/5 group-hover:-translate-y-2 group-hover:shadow-2xl group-hover:shadow-primary/20">
-                    <img 
-                      src={logo.logo} 
-                      alt={logo.name} 
-                      className="max-h-14 max-w-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
-                      loading="lazy"
-                      width={160}
-                      height={80}
-                      onError={(e) => {
-                        (e.target as HTMLImageElement).src = `https://via.placeholder.com/160x80?text=${encodeURIComponent(logo.name)}`;
-                      }}
-                    />
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-            
-            <motion.p 
-              className="text-sm text-muted-foreground max-w-2xl mx-auto mt-12 text-center"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.5, duration: 0.6 }}
-            >
-              And many more growing businesses that trust us with their digital presence
-            </motion.p>
+
+  {/* Infinite Scrolling Logos */}
+  <div className="overflow-hidden">
+    <div className={`${styles.animateScroll} flex items-center gap-12 py-8`}>
+      {[...clientLogos, ...clientLogos].map((logo, i) => (
+        <motion.div 
+          key={i} 
+          className="flex-shrink-0 group relative"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: (i % clientLogos.length) * 0.1, duration: 0.5 }}
+        >
+          <div className="h-28 w-48 flex items-center justify-center p-4 bg-black rounded-2xl border-2 border-white/10 transition-all duration-300 group-hover:border-primary/50 group-hover:bg-primary/5 group-hover:-translate-y-2 group-hover:shadow-2xl group-hover:shadow-primary/20 mx-8">
+            <img 
+              src={logo.logo} 
+              alt={logo.name} 
+              className="max-h-14 max-w-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-300"
+              loading="lazy"
+              width={160}
+              height={80}
+              onError={(e) => {
+                (e.target as HTMLImageElement).src = `https://via.placeholder.com/160x80?text=${encodeURIComponent(logo.name)}`;
+              }}
+            />
           </div>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+
+  <motion.p 
+    className="text-sm text-muted-foreground max-w-2xl mx-auto mt-12 text-center"
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ delay: 0.5, duration: 0.6 }}
+  >
+    And many more growing businesses that trust us with their digital presence
+  </motion.p>
+</div>
+
         </div>
       </section>
 
